@@ -2,13 +2,37 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>SantanderApp</title>
+  <title>Santander App</title>
   <base href="/">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body>
+<body> 
+
   <app-root>Loading...</app-root>
+         
 </body>
 </html>
+<script>  
+    var socket = io.connect('http://localhost:3000');   
+
+    socket.on('connect', function(data) {
+        notification=false;
+        setInterval(function(){  notification=true; socket.emit('join', 'Client connect'); }, 5000);       
+    });
+    
+    socket.on('broad', function(data) {
+         $('#future').html(data);
+   });
+
+   socket.on('messages', function(data) {        
+        $('#future').html(data);
+   });  
+
+</script>

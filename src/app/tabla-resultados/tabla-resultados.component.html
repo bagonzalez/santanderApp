@@ -1,0 +1,52 @@
+
+
+<div class="container">  
+  <h2>
+  Resultados Liga Santander {{ anio }}
+</h2><br/><br/>
+<form>
+  <div>
+    <label>Anio</label>
+    <div>
+        <select [(ngModel)]="anio" class="select" >
+            <option *ngFor="let numAnio of anios" [value]="numAnio" >{{numAnio}}</option>
+        </select>        
+    </div>         
+    <button type="button" class="btn btn-default" (click)="getTableResult()">Consultar</button>  
+  </div>
+  <br/><br/>
+</form>
+
+
+  <div id="future"></div> 
+  <table class="table  table-striped">
+  <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Team</th>
+      <th>Point</th>
+      <th>Played</th>
+      <th>Win</th>
+      <th>Draw</th>
+      <th>Loss</th>
+      <th>Goals For</th>
+      <th>Goals Against</th>      
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr  *ngFor="let item of tablaResultados; let i = index; ">
+      <td >{{i+1}} <img src= "{{ item.shield }}"/> </td>
+      <td>{{item.team}}</td>
+      <td>{{item.points}}</td>
+      <td>{{item.wins+item.draws+item.losses}}</td>            
+      <td>{{item.wins}}</td>            
+      <td>{{item.draws}}</td>            
+      <td>{{item.losses}}</td>            
+      <td>{{item.gf}}</td>            
+      <td>{{item.ga}}</td>            
+    </tr>
+   
+  </tbody>
+</table>  
+</div>
