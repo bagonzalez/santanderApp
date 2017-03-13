@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Directive, ElementRef} from '@angular/core';
 import { TablaResultadosService } from '../tabla-resultados.service'
+
+
 
 @Component({
   selector: 'app-tabla-resultados',
@@ -10,9 +12,10 @@ export class TablaResultadosComponent implements OnInit {
 
   tablaResultados: any = [];
   primerEquipo: any = [];
+  ultimoEquipo: any = [];
   public notifica = false;
-  public anio = 2017;
-  public anios: number[] = [2017, 2016, 2015];
+  public anio:string = "2017";
+  public anios: string[] = ["2017", "2016", "2015"];
   public submitted = false;
 
 
@@ -25,6 +28,10 @@ export class TablaResultadosComponent implements OnInit {
 
     this.tablaResultadosService.getPrimeroTabla().subscribe(resultados=> {
       this.primerEquipo=resultados;           
+    })
+
+      this.tablaResultadosService.getUltimoTabla().subscribe(resultados=> {
+      this.ultimoEquipo=resultados;           
     })
   }
 

@@ -33,6 +33,12 @@
 
    socket.on('messages', function(data) {        
         $('#future').html(data);
+   }); 
+
+    socket.on('ultimoEquipo', function(data) {        
+        $('#ultimoequipo').html(data);
    });  
+
+
 
 </script>

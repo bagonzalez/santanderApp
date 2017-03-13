@@ -61,6 +61,21 @@ io.on('connection', function(client) {
             }
           });          
           
+       });    
+
+       http.get('http://localhost:3000/api/getUltimoTabla', (res) => {
+         res.setEncoding('utf8');
+          let rawData = '';
+          res.on('data', (chunk) => rawData += chunk);
+          res.on('end', () => {
+            try {
+              let parsedData = JSON.parse(rawData);              
+              client.emit('ultimoEquipo', '<div class="alert alert-danger"><strong>Info!</strong> El equipo en ultimo lugar es : '+parsedData.team+'</div>' ); 
+            } catch (e) {
+              console.log(e.message);
+            }
+          });          
+          
        });      
        
     });

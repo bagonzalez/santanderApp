@@ -8,8 +8,8 @@
   <div>
     <label>Anio</label>
     <div>
-        <select [(ngModel)]="anio" class="select" >
-            <option *ngFor="let numAnio of anios" [value]="numAnio" >{{numAnio}}</option>
+        <select [(ngModel)]="anio" class="select" name="anio" >
+            <option *ngFor="let numAnio of anios" [value]="numAnio" >{{numAnio}}</option>             
         </select>        
     </div>         
     <button type="button" class="btn btn-default" (click)="getTableResult()">Consultar</button>  
@@ -19,6 +19,7 @@
 
 
   <div id="future"></div> 
+  <div id="ultimoequipo"></div> 
   <table class="table  table-striped">
   <thead class="thead-inverse">
     <tr>

@@ -28,4 +28,13 @@ export class TablaResultadosService {
 
   }
 
+   getUltimoTabla(){
+
+      return this.http.get('/api/getUltimoTabla')
+      .map(res => res.json());
+
+  }
+
+  
+
 }
